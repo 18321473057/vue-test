@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{ message }}</p>
+    <p v-text="message"></p>
+    <p v-html="message"></p>
+    <button @click="cc"> 点击按钮</button>
+    <button @dblclick="cc"> 双点击按钮</button>
+
+    <p>{{ num }}</p>
+    <button @click="add">加加</button>
+    <button @click="sub">减减</button>
+
+
+    <span v-show="show">{{showData}}</span>
+    <button @click="showf">隐身</button>
+
+    <span v-if="'a' != 'c'">cc</span>
+    <span v-if="show">cc</span>
+
+
+    <ul>
+        <li v-for="(item,index) in liList">
+            {{index}}for{{item}}
+        </li>
+    </ul>
+
+
+</div>
+
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            num: 0,
+            showData: '我会隐身哦',
+            show:true,
+            liList:[1,2,3,4,5,6,7,8,9]
+        },
+        methods: {
+            cc: function () {
+                this.message = (this.message + "dd");
+            },
+            add: function () {
+                this.num++;
+            },
+            sub: function () {
+                this.num--;
+            },
+            showf: function (){
+                this.show = !this.show;
+            }
+        }
+    })
+</script>
+</html>
